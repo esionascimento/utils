@@ -1,4 +1,4 @@
-let input = require('fs').readFileSync('stdin', 'utf8');
+let input = require('fs').readFileSync('./uri/1165-Número-Primo/stdin', 'utf8');
 let lines = input.split('\n');
 
 const countNumber = lines.shift();
