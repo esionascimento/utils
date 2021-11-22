@@ -11,8 +11,10 @@ int main() {
     for (j = 0; diamante[j] != '\0'; j++) {
       if (diamante[j] == '<') {
         menor++;
-      } else if (diamante[j] == '>') {
+      }
+      if (diamante[j] == '>' && menor > 0) {
         maior++;
+        menor--;
       }
     }
     if ((menor || maior) == 0) {
@@ -20,7 +22,7 @@ int main() {
     } else if (maior <= menor) {
       printf("%d\n", maior);
     } else {
-      printf("%d\n", menor);
+      printf("%d\n", maior);
     }
   }
   return 0;
