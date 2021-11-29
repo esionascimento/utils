@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void isSubString(char um[][50], int *tamanho);
+int isSubString(char um[][50]);
 
 int main() {
   int i;
@@ -13,28 +13,35 @@ int main() {
   char quatro[10][50];
   int tamanho = 0;
 
+  int sair = -1;
   do {
     scanf("%s", entrada);
     if (strcmp(entrada, "-1") == 0) {
-      isSubString(um, &tamanho);
+      sair = isSubString(um);
     } else if (strcmp(entrada, "-2") == 0) {
-      isSubString(dois, &tamanho);
+      sair = isSubString(dois);
     } else if (strcmp(entrada, "-3") == 0) {
-      isSubString(tres, &tamanho);
+      sair = isSubString(tres);
     } else {
-      isSubString(quatro, &tamanho);
+      sair = isSubString(quatro);
     }
-  } while ((strcmp(entrada, "0") != 0));
+    printf("sair: %d\n", sair);
+  } while (((strcmp(entrada, "0")) && ((sair != 0)) != 0));
 
-
-  printf("Tamanho: %d\n", tamanho);
+  int tam = atoi(um[0]);
+  printf("Tam: %d\n", tam);
+  for (i = 0; i < 4; i++) {
+    printf("%s ", um[i]);
+  }
   
   return 0;
 }
 
-void isSubString(char um[][50], int *tamanho) {
+int isSubString(char um[][50]) {
   char entrada1[1000];
-  int i = 0;
+  int i = 1;
+  int tamanho = 0;
+  char number[2];
   printf("helo\n");
 
   while (((strcmp(entrada1, "-1")) && (strcmp(entrada1, "-2")) != 0)) {
@@ -44,8 +51,9 @@ void isSubString(char um[][50], int *tamanho) {
     i++;
     tamanho++;
   }
-
+  const char * tam = tamanho;
+  strcpy(um[0], tam);
+  /* strcmp(um[0], charValue); */
   printf("saindo\n");
-  /* if (strcmp(entrada1, "0") != 0)
-    exit(1); */
+  return atoi(entrada1); 
 }
